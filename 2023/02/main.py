@@ -11,8 +11,6 @@ MAX_CUBES = {
   Color.BLUE: 14
 }
 
-f = open('input.txt')
-
 def get_default_occurrences():
   return {
     Color.RED: 0,
@@ -41,7 +39,12 @@ def is_game_possible(occurrences):
       return False
   return True
 
+def get_power_of_occurrences(occurrences):
+  return occurrences[Color.RED] * occurrences[Color.GREEN] * occurrences[Color.BLUE]
+
+f = open('input.txt')
 sum_possible_games = 0
+sum_power_of_sets = 0
 
 for line in f:
   [game, sets] = line.split(':')
@@ -54,5 +57,7 @@ for line in f:
   
   if is_game_possible(max_occurrences):
     sum_possible_games += int(game_number, 10)
+  sum_power_of_sets += get_power_of_occurrences(max_occurrences)
 
-print(sum_possible_games)
+print('part1', sum_possible_games)
+print('part2', sum_power_of_sets)
