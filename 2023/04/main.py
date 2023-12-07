@@ -21,10 +21,9 @@ for i, line in enumerate(f):
 
   matches = [number for number in winning_numbers if number in my_numbers]
   if len(matches):
-    tot += 2**(len(matches) - 1)
+    tot += 2 ** (len(matches) - 1)
     for x in range(1, len(matches) + 1):
       increment_card_copy(i + x, COPIES[i])
-
 
 print('part1', tot)
 print('part2', tot_scratch_cards)
